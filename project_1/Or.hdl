@@ -1,0 +1,41 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Or.hdl
+/**
+ * Or gate:
+ * if (a or b) out = 1, else out = 0 
+ */
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    // Not-And-Not구조 And와 Or의 공통점이 있기 때문에
+    // And를 통해서 Or을 구현
+    // And와 Or은 1,1 0,0일 때의 output이 같다.　   
+    PARTS:
+        Not(in=a, out=notOutA); // NotA
+        Not(in=b, out=notOutB); // NotB
+        // And에서 a, b가 1일 때 out은 0이 되고
+        // a, b가 0일 때 out은 1이 되고
+        // a, b가 서로 다를 때 out은 0이 된다.
+        And(a=notOutA, b=notOutB, out=andOut);
+        // 여기서 Not을 사용하면 a, b가 1일 때 out은 1이 되고
+        // a, b가 0일 때 out은 0이 되고
+        // a, b가 서로 다를 때 out은 1이 된다.
+        // NotA와 NotB는 a, b의 서로 값이 다를 때
+        // And에 아무런 영향을 주지 않지만
+        // a, b가 값이 같을 때 결과가 반전되기 때문에
+        // a, b의 값이 서로 다를 때의 out이 1이 되는 Nand의 특성을 살리면서
+        // Or에 필요한 a, b가 1일 때 Nand를 사용해서 out 1을 얻게 해준다.
+        Not(in=andOut, out=out);
+
+        // NAnd를 사용해서 더 간단히 할 수 있다.
+        // Nand(a=notOutA, b=notOutB, out=out);
+
+        // Or은 a,b의 값이 같은 경우, 값을 반전시켜서 Not(And) 또는 Nand에 입력하고
+        // 다를 경우는 각각을 반전시켜도 서로의 입력 위치만 바뀔 뿐 같기 때문에 그대로 유지시키며
+        // Nand에 입력시켜 out을 얻는 것이다.
+        // Or은 (x-> Not, y-> Not) ->  Not x And Not y -> Not이다.
+        // Or은 Not(Not x And Not y) 또는 Not x Nand Not y다.
+}

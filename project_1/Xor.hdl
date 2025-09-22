@@ -1,0 +1,46 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Xor.hdl
+/**
+ * Exclusive-or gate:
+ * if ((a and Not(b)) or (Not(a) and b)) out = 1, else out = 0
+ */
+CHIP Xor {
+    IN a, b;
+    OUT out;
+
+    /* 
+    이번 조건은 두 입력값이 같다면 마지막에는
+    Nand에 1과 1이 입력되도록 해야한다는 것이다.
+    그래야 0이 된다.
+    Nand는 두개의 입력값이 0이라면 out은 1이 되고
+    1이라면 out은 0이 된다.
+    Nand를 사용하기 전에 입력값이 같을 경우, 무조건 1,1이 되도록
+    해야하니까 입력 a, b에 대해 중간과정에서는 값이 같게 되도록
+    처리의 어떤 차이점을 둬야한다는 거다.
+    Not, Nand, Or을 사용해도 되고
+    Not, And, Or을 사용해도 되고
+    Not, And만 사용해도 되고
+    Not, Nand만 사용해도 된다.
+    */
+    PARTS:
+        // Or마저 구체화했을 경우
+        // Not(in=a, out=notOutA);
+        // And(a=notOutA, b=b, out=andOutA);
+        // Not(in=b, out=NotOutB);
+        // And(a=a, b=NotOutB, out=andOutB);
+        //// 여기서부터는 Or의 구체화다.
+        // Not(in=andOutA, out=orNotOutA);
+        // Not(in=andOutB, out=orNotOutB);
+        //// Or의 구체화중의 And, Not은 Nand로 해도 된다.
+        // And(a=orNotOutA, b=orNotOutB, out=orAndOut);
+        // Not(in=orAndOut, out=out);
+
+        // 여기는 Not, And, Or을 사용한 추상화를 적용한 구현이다.
+        Not(in=a, out=notOutA);
+        And(a=notOutA, b=b, out=andOutA);
+        Not(in=b, out=notOutB);
+        And(a=a, b=notOutB, out=andOutB);
+        Or(a=andOutA, b=andOutB, out=out);
+}
