@@ -1,0 +1,18 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/And.hdl
+/**
+ * And gate:
+ * if (a and b) out = 1, else out = 0 
+ */
+CHIP And {
+    IN a, b;
+    OUT out;
+    
+    PARTS:
+    Nand(a=a, b=b, out=nandOut);
+    Not(in=nandOut, out=out); // Nand의 output인 pin nandOut을 반전시키면 And의 output이 된다.
+    // And는 Nand의 out을 반전시킨 것이다.
+    // And는 Nand->Not, Not(And)다.
+}

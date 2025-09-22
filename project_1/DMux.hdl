@@ -1,0 +1,28 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/DMux.hdl
+/**
+ * Demultiplexor:
+ * [a, b] = [in, 0] if sel = 0
+ *          [0, in] if sel = 1
+ */
+CHIP DMux {
+    IN in, sel;
+    OUT a, b;
+
+    // 디멀티플렉서에서 중요한 점은
+    // 출력이 2개가 되어 혼란스러울 수 있다는 것
+    // 단자가 총 4개라서 혼란스러울 수 있다는 것
+    // 그때에는 아주 간단한 것부터 시작하기
+    // 출력이 2개라면, Or로 하나로 묶는게 아니라 출력을 하는 게이트가 2개는 필요하다.
+    // 가장 중요한 것은, And가 게이트 키퍼 역할을 한다는 것을 이해하는 것이다.
+    // 통과시키냐, 가리냐,를 입력 2개 중 하나가 할 수 있고
+    // 이는 sel이 하는 역할이다.
+    // 입력은 하나이기 때문에 나머지 하나를 할당하면 된다.
+    // out은 출력단자 하나씩을 각 게이트에 배정해주면 된다.
+    PARTS:
+    Not(in=sel, out=noTsel);
+    And(a=in, b=noTsel, out=a);
+    And(a=in, b=sel, out=b);
+}

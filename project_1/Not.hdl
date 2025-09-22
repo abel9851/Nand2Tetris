@@ -1,0 +1,25 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/1/Not.hdl
+/**
+ * Not gate:
+ * if (in) out = 0, else out = 1
+ */
+CHIP Not {
+    IN in; // CHIP Not의 인자를 설정하는 부분이야.
+    OUT out; // 나가는 부분. 들어올때. 즉, return.
+    // IN, OUT은 약속어이고, in, out이라는 이름으로 인자를 바깥에서 받고
+    // out으로 내부에서 처리 가능해.
+    // OUT은 Test Script의 output과 연결되어있어.
+
+    PARTS: // in은 들이는 용도. out은? 거기에 넣으라는 용도.
+    // Nand에서 처리된 return을 out에 담으라는 것.
+    // 위의 CHIP Not에 정의된 OUT은 바깥에 내보낼 때, out에 담긴 값을
+    // 사용하라는 뜻.
+    // 즉, out은 Nand에서 받는 값과, Not의 return할 변수의 값을 지정하는 것이다.
+    // 순서로 보자면, OUT은 PARTS다음으로 와야할듯해.
+     Nand(a=in, b=in, out=out);
+    //즉 Not은 입력값a,b가 같은 Nand다.
+    // 입력값이 같은 한, Not==Nand다.
+}
