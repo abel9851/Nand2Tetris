@@ -41,11 +41,244 @@ CHIP ALU {
         ng;      // if (out < 0)  equals 1, else 0
 
     PARTS:
-    Mux16(a=x, b=false, sel=zx, out=mux16ZxOut);
-    Not16(in=mux16ZxOut, out=not16XOut);
-    Mux16(a=mux16ZxOut, b=not16XOut, sel=nx, out=mux16NxOut);
-    Mux16(a=y, b=false, sel=zy, out=mux16ZyOut);
-    Not16(in=mux16ZyOut, out=not16YOut);
-    Mux16(a=mux16ZyOut, b=not16YOut, sel=ny, out=mux16NyOut);
 
+    // related x
+    Mux(a=x[0], b=false, sel=zx, out=mux16ZxOut1);
+    Mux(a=x[1], b=false, sel=zx, out=mux16ZxOut2);
+    Mux(a=x[2], b=false, sel=zx, out=mux16ZxOut3);
+    Mux(a=x[3], b=false, sel=zx, out=mux16ZxOut4);
+    Mux(a=x[4], b=false, sel=zx, out=mux16ZxOut5);
+    Mux(a=x[5], b=false, sel=zx, out=mux16ZxOut6);
+    Mux(a=x[6], b=false, sel=zx, out=mux16ZxOut7);
+    Mux(a=x[7], b=false, sel=zx, out=mux16ZxOut8);
+    Mux(a=x[8], b=false, sel=zx, out=mux16ZxOut9);
+    Mux(a=x[9], b=false, sel=zx, out=mux16ZxOut10);
+    Mux(a=x[11], b=false, sel=zx, out=mux16ZxOut11);
+    Mux(a=x[12], b=false, sel=zx, out=mux16ZxOut12);
+    Mux(a=x[13], b=false, sel=zx, out=mux16ZxOut13);
+    Mux(a=x[10], b=false, sel=zx, out=mux16ZxOut14);
+    Mux(a=x[14], b=false, sel=zx, out=mux16ZxOut15);
+    Mux(a=x[15], b=false, sel=zx, out=mux16ZxOut16);
+
+    Not(in=mux16ZxOut1, out=not16ZxOut1);
+    Not(in=mux16ZxOut2, out=not16ZxOut2);
+    Not(in=mux16ZxOut3, out=not16ZxOut3);
+    Not(in=mux16ZxOut4, out=not16ZxOut4);
+    Not(in=mux16ZxOut5, out=not16ZxOut5);
+    Not(in=mux16ZxOut6, out=not16ZxOut6);
+    Not(in=mux16ZxOut7, out=not16ZxOut7);
+    Not(in=mux16ZxOut8, out=not16ZxOut8);
+    Not(in=mux16ZxOut9, out=not16ZxOut9);
+    Not(in=mux16ZxOut10, out=not16ZxOut10);
+    Not(in=mux16ZxOut11, out=not16ZxOut11);
+    Not(in=mux16ZxOut12, out=not16ZxOut12);
+    Not(in=mux16ZxOut13, out=not16ZxOut13);
+    Not(in=mux16ZxOut14, out=not16ZxOut14);
+    Not(in=mux16ZxOut15, out=not16ZxOut15);
+    Not(in=mux16ZxOut16, out=not16ZxOut16);
+    Mux(a=mux16ZxOut1, b=not16ZxOut1, sel=nx, out=mux16NxOut1);
+    Mux(a=mux16ZxOut2, b=not16ZxOut2, sel=nx, out=mux16NxOut2);
+    Mux(a=mux16ZxOut3, b=not16ZxOut3, sel=nx, out=mux16NxOut3);
+    Mux(a=mux16ZxOut4, b=not16ZxOut4, sel=nx, out=mux16NxOut4);
+    Mux(a=mux16ZxOut5, b=not16ZxOut5, sel=nx, out=mux16NxOut5);
+    Mux(a=mux16ZxOut6, b=not16ZxOut6, sel=nx, out=mux16NxOut6);
+    Mux(a=mux16ZxOut7, b=not16ZxOut7, sel=nx, out=mux16NxOut7);
+    Mux(a=mux16ZxOut8, b=not16ZxOut8, sel=nx, out=mux16NxOut8);
+    Mux(a=mux16ZxOut9, b=not16ZxOut9, sel=nx, out=mux16NxOut9);
+    Mux(a=mux16ZxOut10, b=not16ZxOut10, sel=nx, out=mux16NxOut10);
+    Mux(a=mux16ZxOut11, b=not16ZxOut11, sel=nx, out=mux16NxOut11);
+    Mux(a=mux16ZxOut12, b=not16ZxOut12, sel=nx, out=mux16NxOut12);
+    Mux(a=mux16ZxOut13, b=not16ZxOut13, sel=nx, out=mux16NxOut13);
+    Mux(a=mux16ZxOut14, b=not16ZxOut14, sel=nx, out=mux16NxOut14);
+    Mux(a=mux16ZxOut15, b=not16ZxOut15, sel=nx, out=mux16NxOut15);
+    Mux(a=mux16ZxOut16, b=not16ZxOut16, sel=nx, out=mux16NxOut16);
+
+
+    // related y
+    Mux(a=y[0], b=false, sel=zy, out=mux16ZyOut1);
+    Mux(a=y[1], b=false, sel=zy, out=mux16ZyOut2);
+    Mux(a=y[2], b=false, sel=zy, out=mux16ZyOut3);
+    Mux(a=y[3], b=false, sel=zy, out=mux16ZyOut4);
+    Mux(a=y[4], b=false, sel=zy, out=mux16ZyOut5);
+    Mux(a=y[5], b=false, sel=zy, out=mux16ZyOut6);
+    Mux(a=y[6], b=false, sel=zy, out=mux16ZyOut7);
+    Mux(a=y[7], b=false, sel=zy, out=mux16ZyOut8);
+    Mux(a=y[8], b=false, sel=zy, out=mux16ZyOut9);
+    Mux(a=y[9], b=false, sel=zy, out=mux16ZyOut10);
+    Mux(a=y[11], b=false, sel=zy, out=mux16ZyOut11);
+    Mux(a=y[12], b=false, sel=zy, out=mux16ZyOut12);
+    Mux(a=y[13], b=false, sel=zy, out=mux16ZyOut13);
+    Mux(a=y[10], b=false, sel=zy, out=mux16ZyOut14);
+    Mux(a=y[14], b=false, sel=zy, out=mux16ZyOut15);
+    Mux(a=y[15], b=false, sel=zy, out=mux16ZyOut16);
+
+    Not(in=mux16ZyOut1, out=not16ZyOut1);
+    Not(in=mux16ZyOut2, out=not16ZyOut2);
+    Not(in=mux16ZyOut3, out=not16ZyOut3);
+    Not(in=mux16ZyOut4, out=not16ZyOut4);
+    Not(in=mux16ZyOut5, out=not16ZyOut5);
+    Not(in=mux16ZyOut6, out=not16ZyOut6);
+    Not(in=mux16ZyOut7, out=not16ZyOut7);
+    Not(in=mux16ZyOut8, out=not16ZyOut8);
+    Not(in=mux16ZyOut9, out=not16ZyOut9);
+    Not(in=mux16ZyOut10, out=not16ZyOut10);
+    Not(in=mux16ZyOut11, out=not16ZyOut11);
+    Not(in=mux16ZyOut12, out=not16ZyOut12);
+    Not(in=mux16ZyOut13, out=not16ZyOut13);
+    Not(in=mux16ZyOut14, out=not16ZyOut14);
+    Not(in=mux16ZyOut15, out=not16ZyOut15);
+    Not(in=mux16ZyOut16, out=not16ZyOut16);
+    Mux(a=mux16ZyOut1, b=not16ZyOut1, sel=ny, out=mux16NyOut1);
+    Mux(a=mux16ZyOut2, b=not16ZyOut2, sel=ny, out=mux16NyOut2);
+    Mux(a=mux16ZyOut3, b=not16ZyOut3, sel=ny, out=mux16NyOut3);
+    Mux(a=mux16ZyOut4, b=not16ZyOut4, sel=ny, out=mux16NyOut4);
+    Mux(a=mux16ZyOut5, b=not16ZyOut5, sel=ny, out=mux16NyOut5);
+    Mux(a=mux16ZyOut6, b=not16ZyOut6, sel=ny, out=mux16NyOut6);
+    Mux(a=mux16ZyOut7, b=not16ZyOut7, sel=ny, out=mux16NyOut7);
+    Mux(a=mux16ZyOut8, b=not16ZyOut8, sel=ny, out=mux16NyOut8);
+    Mux(a=mux16ZyOut9, b=not16ZyOut9, sel=ny, out=mux16NyOut9);
+    Mux(a=mux16ZyOut10, b=not16ZyOut10, sel=ny, out=mux16NyOut10);
+    Mux(a=mux16ZyOut11, b=not16ZyOut11, sel=ny, out=mux16NyOut11);
+    Mux(a=mux16ZyOut12, b=not16ZyOut12, sel=ny, out=mux16NyOut12);
+    Mux(a=mux16ZyOut13, b=not16ZyOut13, sel=ny, out=mux16NyOut13);
+    Mux(a=mux16ZyOut14, b=not16ZyOut14, sel=ny, out=mux16NyOut14);
+    Mux(a=mux16ZyOut15, b=not16ZyOut15, sel=ny, out=mux16NyOut15);
+    Mux(a=mux16ZyOut16, b=not16ZyOut16, sel=ny, out=mux16NyOut16);
+
+    // reated x, y
+    And(a=mux16NxOut1, b=mux16NyOut1, out=and16XYOut1);
+    And(a=mux16NxOut2, b=mux16NyOut2, out=and16XYOut2);
+    And(a=mux16NxOut3, b=mux16NyOut3, out=and16XYOut3);
+    And(a=mux16NxOut4, b=mux16NyOut4, out=and16XYOut4);
+    And(a=mux16NxOut5, b=mux16NyOut5, out=and16XYOut5);
+    And(a=mux16NxOut6, b=mux16NyOut6, out=and16XYOut6);
+    And(a=mux16NxOut7, b=mux16NyOut7, out=and16XYOut7);
+    And(a=mux16NxOut8, b=mux16NyOut8, out=and16XYOut8);
+    And(a=mux16NxOut9, b=mux16NyOut9, out=and16XYOut9);
+    And(a=mux16NxOut10, b=mux16NyOut10, out=and16XYOut10);
+    And(a=mux16NxOut11, b=mux16NyOut11, out=and16XYOut11);
+    And(a=mux16NxOut12, b=mux16NyOut12, out=and16XYOut12);
+    And(a=mux16NxOut13, b=mux16NyOut13, out=and16XYOut13);
+    And(a=mux16NxOut14, b=mux16NyOut14, out=and16XYOut14);
+    And(a=mux16NxOut15, b=mux16NyOut15, out=and16XYOut15);
+    And(a=mux16NxOut16, b=mux16NyOut16, out=and16XYOut16);
+
+    FullAdder(a=mux16NxOut1, b=mux16NyOut1, c=false, sum=add16XYOut1, carry=fullAdder1Carrout);
+    FullAdder(a=mux16NxOut2, b=mux16NyOut2, c=fullAdder1Carrout, sum=add16XYOut2, carry=fullAdder2Carrout);
+    FullAdder(a=mux16NxOut3, b=mux16NyOut3, c=fullAdder2Carrout, sum=add16XYOut3, carry=fullAdder3Carrout);
+    FullAdder(a=mux16NxOut4, b=mux16NyOut4, c=fullAdder3Carrout, sum=add16XYOut4, carry=fullAdder4Carrout);
+    FullAdder(a=mux16NxOut5, b=mux16NyOut5, c=fullAdder4Carrout, sum=add16XYOut5, carry=fullAdder5Carrout);
+    FullAdder(a=mux16NxOut6, b=mux16NyOut6, c=fullAdder5Carrout, sum=add16XYOut6, carry=fullAdder6Carrout);
+    FullAdder(a=mux16NxOut7, b=mux16NyOut7, c=fullAdder6Carrout, sum=add16XYOut7, carry=fullAdder7Carrout);
+    FullAdder(a=mux16NxOut8, b=mux16NyOut8, c=fullAdder7Carrout, sum=add16XYOut8, carry=fullAdder8Carrout);
+    FullAdder(a=mux16NxOut9, b=mux16NyOut9, c=fullAdder8Carrout, sum=add16XYOut9, carry=fullAdder9Carrout);
+    FullAdder(a=mux16NxOut10, b=mux16NyOut10, c=fullAdder9Carrout, sum=add16XYOut10, carry=fullAdder10Carrout);
+    FullAdder(a=mux16NxOut11, b=mux16NyOut11, c=fullAdder10Carrout, sum=add16XYOut11, carry=fullAdder11Carrout);
+    FullAdder(a=mux16NxOut12, b=mux16NyOut12, c=fullAdder11Carrout, sum=add16XYOut12, carry=fullAdder12Carrout);
+    FullAdder(a=mux16NxOut13, b=mux16NyOut13, c=fullAdder12Carrout, sum=add16XYOut13, carry=fullAdder13Carrout);
+    FullAdder(a=mux16NxOut14, b=mux16NyOut14, c=fullAdder13Carrout, sum=add16XYOut14, carry=fullAdder14Carrout);
+    FullAdder(a=mux16NxOut15, b=mux16NyOut15, c=fullAdder14Carrout, sum=add16XYOut15, carry=fullAdder15Carrout);
+    FullAdder(a=mux16NxOut16, b=mux16NyOut16, c=fullAdder15Carrout, sum=add16XYOut16, carry=fullAdder16Carrout);
+
+    Mux(a=and16XYOut1, b=add16XYOut1, sel=f, out=mux16XYOut1);
+    Mux(a=and16XYOut2, b=add16XYOut2, sel=f, out=mux16XYOut2);
+    Mux(a=and16XYOut3, b=add16XYOut3, sel=f, out=mux16XYOut3);
+    Mux(a=and16XYOut4, b=add16XYOut4, sel=f, out=mux16XYOut4);
+    Mux(a=and16XYOut5, b=add16XYOut5, sel=f, out=mux16XYOut5);
+    Mux(a=and16XYOut6, b=add16XYOut6, sel=f, out=mux16XYOut6);
+    Mux(a=and16XYOut7, b=add16XYOut7, sel=f, out=mux16XYOut7);
+    Mux(a=and16XYOut8, b=add16XYOut8, sel=f, out=mux16XYOut8);
+    Mux(a=and16XYOut9, b=add16XYOut9, sel=f, out=mux16XYOut9);
+    Mux(a=and16XYOut10, b=add16XYOut10, sel=f, out=mux16XYOut10);
+    Mux(a=and16XYOut11, b=add16XYOut11, sel=f, out=mux16XYOut11);
+    Mux(a=and16XYOut12, b=add16XYOut12, sel=f, out=mux16XYOut12);
+    Mux(a=and16XYOut13, b=add16XYOut13, sel=f, out=mux16XYOut13);
+    Mux(a=and16XYOut14, b=add16XYOut14, sel=f, out=mux16XYOut14);
+    Mux(a=and16XYOut15, b=add16XYOut15, sel=f, out=mux16XYOut15);
+    Mux(a=and16XYOut16, b=add16XYOut16, sel=f, out=mux16XYOut16);
+
+    // related mux16XYOut no
+    Not(in=mux16XYOut1, out=not16XYOut1);
+    Not(in=mux16XYOut2, out=not16XYOut2);
+    Not(in=mux16XYOut3, out=not16XYOut3);
+    Not(in=mux16XYOut4, out=not16XYOut4);
+    Not(in=mux16XYOut5, out=not16XYOut5);
+    Not(in=mux16XYOut6, out=not16XYOut6);
+    Not(in=mux16XYOut7, out=not16XYOut7);
+    Not(in=mux16XYOut8, out=not16XYOut8);
+    Not(in=mux16XYOut9, out=not16XYOut9);
+    Not(in=mux16XYOut10, out=not16XYOut10);
+    Not(in=mux16XYOut11, out=not16XYOut11);
+    Not(in=mux16XYOut12, out=not16XYOut12);
+    Not(in=mux16XYOut13, out=not16XYOut13);
+    Not(in=mux16XYOut14, out=not16XYOut14);
+    Not(in=mux16XYOut15, out=not16XYOut15);
+    Not(in=mux16XYOut16, out=not16XYOut16);
+
+    Mux(a=mux16XYOut1, b=not16XYOut1, sel=no, out=noOut1);
+    Mux(a=mux16XYOut2, b=not16XYOut2, sel=no, out=noOut2);
+    Mux(a=mux16XYOut3, b=not16XYOut3, sel=no, out=noOut3);
+    Mux(a=mux16XYOut4, b=not16XYOut4, sel=no, out=noOut4);
+    Mux(a=mux16XYOut5, b=not16XYOut5, sel=no, out=noOut5);
+    Mux(a=mux16XYOut6, b=not16XYOut6, sel=no, out=noOut6);
+    Mux(a=mux16XYOut7, b=not16XYOut7, sel=no, out=noOut7);
+    Mux(a=mux16XYOut8, b=not16XYOut8, sel=no, out=noOut8);
+    Mux(a=mux16XYOut9, b=not16XYOut9, sel=no, out=noOut9);
+    Mux(a=mux16XYOut10, b=not16XYOut10, sel=no, out=noOut10);
+    Mux(a=mux16XYOut11, b=not16XYOut11, sel=no, out=noOut11);
+    Mux(a=mux16XYOut12, b=not16XYOut12, sel=no, out=noOut12);
+    Mux(a=mux16XYOut13, b=not16XYOut13, sel=no, out=noOut13);
+    Mux(a=mux16XYOut14, b=not16XYOut14, sel=no, out=noOut14);
+    Mux(a=mux16XYOut15, b=not16XYOut15, sel=no, out=noOut15);
+    Mux(a=mux16XYOut16, b=not16XYOut16, sel=no, out=noOut16);
+
+    And16(
+        a[0]=noOut1,
+        a[1]=noOut2,
+        a[2]=noOut3,
+        a[3]=noOut4,
+        a[4]=noOut5,
+        a[5]=noOut6,
+        a[6]=noOut7,
+        a[7]=noOut8,
+        a[8]=noOut9,
+        a[9]=noOut10,
+        a[10]=noOut11,
+        a[11]=noOut12,
+        a[12]=noOut13,
+        a[13]=noOut14,
+        a[14]=noOut15,
+        a[15]=noOut16,
+        b=true,
+        out=out
+    );
+
+    // zr
+    Or8Way(
+        in[0]=noOut1, 
+        in[1]=noOut2, 
+        in[2]=noOut3, 
+        in[3]=noOut4, 
+        in[4]=noOut5, 
+        in[5]=noOut6, 
+        in[6]=noOut7, 
+        in[7]=noOut8, 
+        out=or8Out1
+    );
+    Or8Way(
+        in[0]=noOut9, 
+        in[1]=noOut10, 
+        in[2]=noOut11, 
+        in[3]=noOut12, 
+        in[4]=noOut13, 
+        in[5]=noOut14, 
+        in[6]=noOut15, 
+        in[7]=noOut16, 
+        out=or8Out2
+    );
+    Or(a=or8Out1, b=or8Out2, out=or16Out);
+    Not(in=or16Out, out=zr);
+
+    // ng
+    And(a=noOut16, b=true, out=ng);
 }
