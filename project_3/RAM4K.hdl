@@ -1,0 +1,50 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/3/b/RAM4K.hdl
+/**
+ * Memory of 4K 16-bit registers.
+ * If load is asserted, the value of the register selected by
+ * address is set to in; Otherwise, the value does not change.
+ * The value of the selected register is emitted by out.
+ */
+CHIP RAM4K {
+    IN in[16], load, address[12];
+    OUT out[16];
+
+    PARTS:
+    DMux8Way(
+        in=load,
+        sel=address[9..11],
+        a=ram512ALoadIn,
+        b=ram512BLoadIn,
+        c=ram512CLoadIn,
+        d=ram512DLoadIn,
+        e=ram512ELoadIn,
+        f=ram512FLoadIn,
+        g=ram512GLoadIn,
+        h=ram512HLoadIn 
+    );
+
+    RAM512(in=in, load=ram512ALoadIn, address=address[0..8], out=ram512AOut);
+    RAM512(in=in, load=ram512BLoadIn, address=address[0..8], out=ram512BOut);
+    RAM512(in=in, load=ram512CLoadIn, address=address[0..8], out=ram512COut);
+    RAM512(in=in, load=ram512DLoadIn, address=address[0..8], out=ram512DOut);
+    RAM512(in=in, load=ram512ELoadIn, address=address[0..8], out=ram512EOut);
+    RAM512(in=in, load=ram512FLoadIn, address=address[0..8], out=ram512FOut);
+    RAM512(in=in, load=ram512GLoadIn, address=address[0..8], out=ram512GOut);
+    RAM512(in=in, load=ram512HLoadIn, address=address[0..8], out=ram512HOut);
+
+    Mux8Way16(
+        a=ram512AOut,
+        b=ram512BOut,
+        c=ram512COut,
+        d=ram512DOut,
+        e=ram512EOut,
+        f=ram512FOut,
+        g=ram512GOut,
+        h=ram512HOut,
+        sel=address[9..11],
+        out=out
+    );
+}
