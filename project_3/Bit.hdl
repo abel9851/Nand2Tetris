@@ -1,0 +1,28 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/3/a/Bit.hdl
+/**
+ * 1-bit register:
+ * If load is asserted, the register's value is set to in;
+ * Otherwise, the register maintains its current value:
+ * if (load(t)) out(t+1) = in(t), else out(t+1) = out(t)
+ */
+CHIP Bit {
+    IN in, load;
+    OUT out;
+
+    PARTS:
+    Mux(a=outLoop1, b=in, sel=load, out=muxOut1); // load = 0, out = a, load = 1, out = b
+    DFF(in=muxOut1, out=outLoop1, out=out); // out을 2번 정의하면 되는구나...
+}
+// load가 1일 때 
+// clock이 +일 때 받은 입력은 다음 주기 첫시작때 반영되지 않는다.
+// 무조건 주기 첫시작에서 받은 입력값이 다음 주기 첫시작 때 반영된다.
+// tick, tock의 정의를 잘못 이해했다...
+// tick이 상승에지(+), 톡이 하강에지로, 하강에지일때 다음 주기로 바뀌더라.
+// tick(상승에지)로 바뀔때 입력한 값과 load가 tock(하강에지) 다음 주기에 반영된다.
+// 입력이 포착되는거야.
+// Tock할 때 출력되는거고.
+// Tick할 때 이미 멀티플렉서에서 출력이되고 DFF의 입력이 되는거야. in(t)말이야.
+// Tock할 때 out(t+1)로, in(t)가 반영되는거고.
