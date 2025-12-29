@@ -4,13 +4,16 @@
 ```plaintext
 
 n = 0
+R2 = 0
 
-LOOP
-    if (n == R1) goto END
+LOOP:
+    if (n == R1) goto STOP
     R2 = R2 + R0
     n = n + 1
     goto LOOP
-END;
+STOP:
+    goto STOP // Infinite loop
+
 
 ```
 
