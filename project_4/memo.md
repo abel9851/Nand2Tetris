@@ -13,3 +13,6 @@ LOOP
 END;
 
 ```
+
+### project_4/Mult.asm을 구현한 결과
+- (END)다음에 있는 @END와 0;JMP에서 무한 루프하는 것을 확인했다. 정상동작이다.
