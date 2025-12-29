@@ -14,7 +14,6 @@ LOOP:
 STOP:
     goto STOP // Infinite loop
 
-
 ```
 
 ### project_4/Mult.asm을 구현한 결과
