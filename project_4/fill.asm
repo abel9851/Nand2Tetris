@@ -1,82 +1,45 @@
-// n = SCREEN
-@SCREEN // 16374
-D=A
-@n
+@SCREEN
+D=A-1
+@position
 M=D
 
-
-(PAINT)
-// (if KBD = 0) goto END
+(POLL)
 @KBD
 D=M
-@END
+@PAINT
+D;JGT
+@ERASE
 D;JEQ
 
-// (if n = 24576) goto END
+(PAINT)
 @KBD
 D=A
-@n
+@position
 D=D-M
-@END
+@POLL
 D;JEQ
 
-// RAM[n] = -1
-@n 
-A=M // @n의 M에는 주소값이 들어가있고 그 값을 A에 할당하면 레지스터가 [A] 즉, RAM[n]이 된다.
+@position
+M=M+1
+A=M
 M=-1
 
-// n = n + 1
-@n
-M=M+1
-
-// go to PAINT
-@PAINT
+@POLL
 0;JMP
 
 (ERASE)
-// (if KBD > 0) goto END
-@KBD
-D=M
-@END
-D;JGT
-
-// (if n = 24576) goto END
-@KBD
-D=A
-@n
+@SCREEN
+D=A-1
+@position
 D=D-M
-@END
+@POLL
 D;JEQ
 
-// RAM[n] = 0
-@n
-A=M
+@position
+D=M
+M=M-1
+A=D
 M=0
 
-// n = n + 1
-@n
-M=M+1
-
-// go to ERASE
-@ERASE
-0;JMP
-
-
-(END)
-// n = SCREEN
-@SCREEN
-D=A
-@n
-M=D
-
-// (if KBD > 0) goto PAINT
-@KBD
-D=M
-@PAINT
-D;JGT
-
-// (if KBD = 0) goto ERASE
-@KBD
-D=M
-@ERASE
-D;JEQ
+@POLL
+D;JMP
