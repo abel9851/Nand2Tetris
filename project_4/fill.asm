@@ -1,5 +1,5 @@
-@SCREEN
-D=A-1
+@16383
+D=A
 @position
 M=D
 
@@ -12,28 +12,28 @@ D;JGT
 D;JEQ
 
 (PAINT)
-@KBD
+@24575
 D=A
 @position
 D=D-M
 @POLL
-D;JEQ
+D;JLE
 
 @position
 M=M+1
-A=M
+A=M 
 M=-1
 
 @POLL
 0;JMP
 
 (ERASE)
-@SCREEN
-D=A-1
+@16383
+D=A
 @position
 D=D-M
 @POLL
-D;JEQ
+D;JGE
 
 @position
 D=M
@@ -43,3 +43,4 @@ M=0
 
 @POLL
 0;JMP
+ 
