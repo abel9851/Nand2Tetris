@@ -42,4 +42,4 @@ A=D
 M=0
 
 @POLL
-D;JMP
+0;JMP
